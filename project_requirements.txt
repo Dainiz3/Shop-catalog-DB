@@ -1,0 +1,12 @@
+GUI-Thinker madafaka : 
+    -Start window:
+        Buttons: Create, Search
+        Background Picture
+    -Create invenory window
+    -Search invenory
+
+Database - MongoDB(NoSQL) 
+
+Python version 3.9.X
+
+
