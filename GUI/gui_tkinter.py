@@ -11,14 +11,13 @@ class Main_window(Tk):
         self.window_config()
         self.canvas: Canvas = Canvas(self, width = 1400, height = 1130)
         self.widgets()
-        
         self._apply_canvas()
         
 
     def _apply_canvas(self) -> None:
         self.canvas.pack()
         self.canvas.create_image( 0, 0, image = self.img, anchor = "nw")
-        self.canvas.create_text(300, 50, text="Welcome to our shop", fill="Purple", font=self.myFont)
+        self.canvas.create_text(650, 150, text="Welcome to our shop", fill="Purple", font=self.myFont)
 
         
     def window_config(self):
@@ -28,7 +27,7 @@ class Main_window(Tk):
         self.bgcolor = '#333359'
         self['background']=self.bgcolor
         self.img = ImageTk.PhotoImage(Image.open("Shop-catalog-DB/icons/berlinki.PNG"))
-        self.myFont = font.Font(family='Bookman Old Style', size=12, weight='bold')
+        self.myFont = font.Font(family='Bookman Old Style', size=50, weight='bold')
         # self.bg = ImageTk.PhotoImage(file = "images/background.jpg")
 
     def widgets(self):
