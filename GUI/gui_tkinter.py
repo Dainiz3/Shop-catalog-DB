@@ -1,6 +1,6 @@
 
-from tkinter import Tk, Canvas
-# from PIL import ImageTk, Image
+from tkinter import Tk, Canvas, Button
+from PIL import ImageTk, Image
 import tkinter.font as font
 
 class Main_window(Tk):
@@ -9,19 +9,33 @@ class Main_window(Tk):
         super().__init__()
 
         self.window_config()
-        self.canvas1.pack()
-        self.canvas1.create_text(300, 50, text="Welcome to our shop", fill="black", font=self.myFont)
+        self.canvas: Canvas = Canvas(self, width = 1400, height = 1130)
+        self.widgets()
+        
+        self._apply_canvas()
+        
 
+    def _apply_canvas(self) -> None:
+        self.canvas.pack()
+        self.canvas.create_image( 0, 0, image = self.img, anchor = "nw")
+        self.canvas.create_text(300, 50, text="Welcome to our shop", fill="Purple", font=self.myFont)
 
+        
     def window_config(self):
         self.title("WEB shop catalogue (Main window)")
-        self.geometry("600x500")
-        self.canvas1 = Canvas(self, width = 300, height = 250)
+        self.geometry("1400x900")
+
         self.bgcolor = '#333359'
         self['background']=self.bgcolor
-        # self.img = ImageTk.PhotoImage(Image.open("images/bot_picture1.PNG"))
+        self.img = ImageTk.PhotoImage(Image.open("Shop-catalog-DB/icons/berlinki.PNG"))
         self.myFont = font.Font(family='Bookman Old Style', size=12, weight='bold')
         # self.bg = ImageTk.PhotoImage(file = "images/background.jpg")
+
+    def widgets(self):
+        button_search = Button(self.canvas, text="Search", borderwidth=0)
+        button_create= Button(self.canvas, text="Create", borderwidth=0)
+        self.canvas.create_window(10, 10, anchor="nw", window=button_search)
+        self.canvas.create_window(70, 10, anchor="nw", window=button_create)
 
 if __name__ == "__main__":
     app = Main_window()
