@@ -1,5 +1,5 @@
 
-from tkinter import Tk, Canvas, Button
+from tkinter import Tk, Canvas, Button, Entry
 from PIL import ImageTk, Image
 import tkinter.font as font
 
@@ -26,15 +26,19 @@ class Main_window(Tk):
 
         self.bgcolor = '#333359'
         self['background']=self.bgcolor
-        self.img = ImageTk.PhotoImage(Image.open("Shop-catalog-DB/icons/berlinki.PNG"))
-        self.myFont = font.Font(family='Bookman Old Style', size=50, weight='bold')
+        self.img = ImageTk.PhotoImage(Image.open("icons/berlinki.PNG"))
+        self.myFont = font.Font(family='Bookman Old Style', size=18, weight='bold')
         # self.bg = ImageTk.PhotoImage(file = "images/background.jpg")
 
     def widgets(self):
         button_search = Button(self.canvas, text="Search", borderwidth=0)
-        button_create= Button(self.canvas, text="Create", borderwidth=0)
+        button_create= Button(self.canvas, text="Create", borderwidth=0, command=self.create)
         self.canvas.create_window(10, 10, anchor="nw", window=button_search)
         self.canvas.create_window(70, 10, anchor="nw", window=button_create)
+
+    def create(self):
+        self.field = Entry(self, width=15, font=self.myFont)
+        self.canvas.create_window(10, 70, anchor="nw", window=self.field)
 
 if __name__ == "__main__":
     app = Main_window()
@@ -46,3 +50,4 @@ if __name__ == "__main__":
 # window.title("Hello, welcome to catalogue")
 
 # window.mainloop()
+#self.field = Entry(self, width=45, font=self.myFont)
